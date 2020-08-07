@@ -255,10 +255,23 @@
     <script src="js/core.min.js"></script>
     <script src="js/script.js"></script>
     
-    	<script type="text/javascript">
-document.getElementById('rd-search-results-live').onsubmit = function() {
-    window.location = 'https://www.google.com/search?q=site:https://apexwebstore.github.io/Medina ' + document.getElementById('test').value;
-    return false;
+    <script>
+function search() {
+ 
+   var name = document.getElementById("rd-navbar-search-form-input").elements["rd-search-results-live"].value;
+   var pattern = name.toLowerCase();
+   var targetId = "";
+ 
+   var divs = document.getElementsByClassName("col-md-2");
+   for (var i = 0; i < divs.length; i++) {
+      var para = divs[i].getElementsByTagName("p");
+      var index = para[0].innerText.toLowerCase().indexOf(pattern);
+      if (index != -1) {
+         targetId = divs[i].parentNode.id;
+         document.getElementById(targetId).scrollIntoView();
+         break;
+      }
+   }  
 }
 </script>
     
